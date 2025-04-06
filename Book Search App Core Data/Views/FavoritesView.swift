@@ -2,7 +2,7 @@
 //  FavoritesView.swift
 //  Book Search App Core Data
 //
-//  Created by Mounesh on 4/6/25.
+//  Created by Moulya on 4/6/25.
 //
 
 import SwiftUI
@@ -32,7 +32,7 @@ struct FavoritesView: View {
     }
     
     private func deleteFavorite(at offsets: IndexSet) {
-        for index in offsets {
+        offsets.forEach { index in
             let book = favoritesVM.favorites[index]
             favoritesVM.removeFavorite(book: book)
         }

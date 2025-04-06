@@ -2,7 +2,7 @@
 //  BookRowView.swift
 //  Book Search App Core Data
 //
-//  Created by Mounesh on 4/6/25.
+//  Created by Moulya on 4/6/25.
 //
 
 import SwiftUI
@@ -17,7 +17,7 @@ struct BookRowView: View {
             if let url = URL(string: book.coverImageUrl), !book.coverImageUrl.isEmpty {
                 AsyncImage(url: url) { image in
                     image.resizable()
-                         .aspectRatio(contentMode: .fit)
+                         .scaledToFit()
                 } placeholder: {
                     Color.gray
                 }
@@ -45,8 +45,10 @@ struct BookRowView: View {
             Spacer()
             
             Button(action: favoriteAction) {
-                Image(systemName: isFavorite ? "star.fill" : "star")
-                    .foregroundColor(isFavorite ? .yellow : .gray)
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
+                    .foregroundColor(isFavorite ? .red : .gray)
+                    .scaleEffect(isFavorite ? 1.2 : 1.0)
+                    .animation(.easeInOut, value: isFavorite)
             }
             .buttonStyle(BorderlessButtonStyle())
         }
